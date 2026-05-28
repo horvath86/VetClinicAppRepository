@@ -1,0 +1,23 @@
+<h2>Animals</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Species</th>
+      <th>Date of birth</th>
+      <th>Gender</th>
+      <th>Owner name</th>
+      <th>Phone</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let animal of animals">
+      <td>{{ animal.name }}</td>
+      <td>{{ Species[animal.species] }}</td>
+      <td>{{ animal.dateOfBirth | date }}</td>
+      <td>{{ Gender[animal.gender] }}</td>
+      <td>{{ animal.ownerName }}</td>
+      <td>{{ animal.phone }}</td>
+    </tr>
+  </tbody>
