@@ -1,0 +1,31 @@
+<h2>{{ isEditing ? 'Edit' : 'Add' }} veterinarian</h2>>
+
+<div *ngIf="errorMessage!=''">
+    {{ errorMessage }}  
+</div>
+
+<form (ngSubmit)="onSubmit()">
+
+    <div>
+        <label for="name">Name:</label>
+        <input type="text" name="name" [(ngModel)]="veterinarianDTO.name">
+    </div>
+    
+    <div>
+        <label for="email">Email:</label>
+        <input type="email" name="email" [(ngModel)]="veterinarianDTO.email">
+    </div>
+
+    <div>
+        <label for="password">Password:</label>
+        <input type="password" name="password" [(ngModel)]="veterinarianDTO.password">
+    </div>
+
+    <div>
+        <label for="passConfirm">Confirm Password:</label>
+        <input type="password" name="passConfirm" [(ngModel)]="veterinarianDTO.passConfirm">
+    </div>
+    
+    <div>
+        <button type="submit">{{ isEditing ? 'Edit' : 'Add' }} veterinarian</button>
+    </div>

@@ -1,0 +1,22 @@
+<h2>Veterinarians</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let veterinarian of veterinarians">
+            <td>{{ veterinarian.id }}</td>
+            <td>{{ veterinarian.name }}</td>
+            <td>{{ veterinarian.email }}</td>
+            <td>
+                <button (click)="updateVeterinarian(veterinarian.id)">Edit</button>
+                <button (click)="deleteVeterinarian(veterinarian.id)">Delete</button>
+            </td>
+        </tr>
+</table>
