@@ -1,1 +1,51 @@
-<p>animal-form works!</p>
+<h2>{{ isEditing ? 'Edit' : 'Create' }} animal</h2>
+
+<div *ngIf="errorMessage!=''">
+    {{ errorMessage }}
+</div>
+
+<form (ngSubmit)="onSubmit()">
+
+    <div>
+        <label for="name">Name:</label>
+        <input type="text" name="name" [(ngModel)]="animalDTO.name">
+    </div>
+    
+    <div>
+        <label for="species">Species:</label>
+        <select name="species" [(ngModel)]="animalDTO.species">
+            <option *ngFor="let species of Species; let i = index" [ngValue]="i">
+                {{ species }}
+            </option>
+        </select>
+    </div>
+    
+    <div>
+        <label for="dateOfBirth">Date of Birth:</label>
+        <input type="date" name="dateOfBirth" [(ngModel)]="animalDTO.dateOfBirth">
+    </div>
+    
+    <div>
+        <label for="gender">Gender:</label>
+        <select name="gender" [(ngModel)]="animalDTO.gender">
+            <option *ngFor="let gender of Gender; let i = index" [ngValue]="i">
+                {{ gender }}
+            </option>
+        </select>
+    </div>
+    
+    <div>
+        <label for="ownerName">Owner Name:</label>
+        <input type="text" name="ownerName" [(ngModel)]="animalDTO.ownerName">
+    </div>
+    
+    <div>
+        <label for="phone">Phone:</label>
+        <input type="tel" name="phone" [(ngModel)]="animalDTO.phone">
+    </div>
+    
+    <div>
+        <button type="submit">{{ isEditing ? 'Edit' : 'Create' }} animal</button>
+    </div>
+    
+</form>

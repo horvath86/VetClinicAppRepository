@@ -1,7 +1,7 @@
 import { GenderEnum } from "../Enums/Gender.enum";
 import { SpeciesEnum } from "../Enums/Species.enum";
 
-export interface Animal {
+export interface AnimalDTO {
     name: string;
     species: SpeciesEnum;
     dateOfBirth: Date;

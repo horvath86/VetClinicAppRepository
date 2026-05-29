@@ -3,21 +3,28 @@
 <table>
   <thead>
     <tr>
+      <th>ID</th>
       <th>Name</th>
       <th>Species</th>
       <th>Date of birth</th>
       <th>Gender</th>
       <th>Owner name</th>
       <th>Phone</th>
+      <th>Actions</th>
     </tr>
   </thead>
   <tbody>
     <tr *ngFor="let animal of animals">
+      <td>{{ animal.id }}</td>
       <td>{{ animal.name }}</td>
       <td>{{ Species[animal.species] }}</td>
       <td>{{ animal.dateOfBirth | date }}</td>
       <td>{{ Gender[animal.gender] }}</td>
       <td>{{ animal.ownerName }}</td>
       <td>{{ animal.phone }}</td>
+      <td>
+        <button (click)="updateAnimal(animal.id)">Edit</button>
+        <button (click)="deleteAnimal(animal.id)">Delete</button>
+      </td>
     </tr>
   </tbody>

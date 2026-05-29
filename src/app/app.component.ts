@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { AnimalTableComponent } from './components/animal-table/animal-table.component';
+import { RouterModule } from "@angular/router";
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, AnimalTableComponent],
+  imports: [RouterOutlet, AnimalTableComponent, RouterModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
