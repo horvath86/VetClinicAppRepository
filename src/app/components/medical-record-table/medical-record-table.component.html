@@ -1,0 +1,30 @@
+<h2>Medical Records</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Animal ID</th>
+            <th>Vet ID</th>
+            <th>Visit Date</th>
+            <th>Symptoms</th>
+            <th>Diagnosis</th>
+            <th>Notes</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let record of medicalRecords">
+            <td>{{ record.id }}</td>
+            <td>{{ record.animalId }}</td>
+            <td>{{ getVeterinarianName(record.vetId) }}</td>
+            <td>{{ record.visitDate | date }}</td>
+            <td>{{ record.symptoms }}</td>
+            <td>{{ record.diagnosis }}</td>
+            <td>{{ record.notes }}</td>
+            <td>
+                <button (click)="updateMedicalRecord(record.id)">Edit</button>
+                <button (click)="deleteMedicalRecord(record.id)">Delete</button>
+            </td>
+        </tr>
+</table>

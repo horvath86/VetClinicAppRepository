@@ -1,0 +1,51 @@
+<h2>{{isEditing ? 'Edit Medical Record' : 'Create Medical Record'}}</h2>
+
+<div *ngIf="errorMessage!=''">
+    {{ errorMessage }}  
+</div>
+
+<form (ngSubmit)="onSubmit()">
+
+    <div>
+    <label for="animalId">Animal:</label>
+    <select name="animalId" id="animalId" [(ngModel)]="medicalRecordDTO.animalId">
+        <option value="0" disabled selected>-- Select an Animal --</option>
+        <option *ngFor="let animal of animals" [value]="animal.id">
+            {{ animal.name }} (ID: {{ animal.id }})
+        </option>
+    </select>
+    </div>
+
+    <div>
+    <label for="vetId">Veterinarian:</label>
+    <select name="vetId" id="vetId" [(ngModel)]="medicalRecordDTO.vetId">
+        <option value="0" disabled selected>-- Select a Veterinarian --</option>
+        <option *ngFor="let vet of veterinarians" [value]="vet.id">
+            {{ vet.name }}
+        </option>
+    </select>
+    </div>
+
+    <div>
+        <label for="visitDate">Visit date:</label>
+        <input type="date" name="visitDate" [(ngModel)]="medicalRecordDTO.visitDate">
+    </div>
+
+    <div>
+        <label for="symptoms">Symptoms:</label>
+        <input type="text" name="symptoms" [(ngModel)]="medicalRecordDTO.symptoms">
+    </div>
+
+    <div>
+        <label for="diagnosis">Diagnosis:</label>
+        <input type="text" name="diagnosis" [(ngModel)]="medicalRecordDTO.diagnosis">
+    </div>
+
+    <div>
+        <label for="notes">Notes:</label>
+        <input type="text" name="notes" [(ngModel)]="medicalRecordDTO.notes">
+    </div>
+
+    <div>
+        <button type="submit">{{isEditing ? 'Edit' : 'Create'}} medical record</button>
+    </div>

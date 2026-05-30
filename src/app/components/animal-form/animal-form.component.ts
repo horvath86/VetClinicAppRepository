@@ -16,6 +16,14 @@ import {Router, ActivatedRoute} from "@angular/router";
 })
 export class AnimalFormComponent implements OnInit {
 
+  animalDTO : AnimalDTO = {
+    name: '',
+    species: 0,
+    dateOfBirth: new Date(),
+    gender: 0,
+    ownerName: '',
+    phone: '',
+  }
 
   constructor(private animalService: AnimalService, private router: Router, private route: ActivatedRoute) {}
 
@@ -31,7 +39,7 @@ export class AnimalFormComponent implements OnInit {
             this.animalDTO = {
               name: response.name,
               species: response.species,
-              dateOfBirth: new Date(response.dateOfBirth),
+              dateOfBirth: response.dateOfBirth,
               gender: response.gender,
               ownerName: response.ownerName,
               phone: response.phone
@@ -48,14 +56,7 @@ export class AnimalFormComponent implements OnInit {
     });
   }
 
-  animalDTO : AnimalDTO = {
-    name: '',
-    species: 0,
-    dateOfBirth: new Date(),
-    gender: 0,
-    ownerName: '',
-    phone: '',
-  }
+  
 
   isEditing: boolean = false;
   errorMessage: string = '';
