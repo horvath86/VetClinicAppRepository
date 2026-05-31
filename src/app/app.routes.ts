@@ -5,6 +5,8 @@ import { VeterinarianTableComponent } from './components/veterinarian-table/vete
 import { VeterinarianFormComponent } from './components/veterinarian-form/veterinarian-form.component';
 import { MedicalRecordTableComponent } from './components/medical-record-table/medical-record-table.component';
 import { MedicalRecordFormComponent } from './components/medical-record-form/medical-record-form.component';
+import { PrescriptionTableComponent } from './components/prescription-table/prescription-table.component';
+import { PrescriptionFormComponent } from './components/prescription-form/prescription-form.component';
 
 export const routes: Routes = [
   { path: '', component: AnimalTableComponent },
@@ -16,7 +18,11 @@ export const routes: Routes = [
   { path: 'updateVeterinarian/:id', component: VeterinarianFormComponent },
   { path: 'medicalRecords', component: MedicalRecordTableComponent},
   { path: "createMedicalRecord", component: MedicalRecordFormComponent },
-  { path: "updateMedicalRecord/:id", component: MedicalRecordFormComponent }
+  { path: "updateMedicalRecord/:id", component: MedicalRecordFormComponent },
+  { path: "prescriptions", component: PrescriptionTableComponent },
+  { path: "createPrescription", component: PrescriptionFormComponent },
+  { path: "updatePrescription/:id", component: PrescriptionFormComponent }
+
 
   
 ];

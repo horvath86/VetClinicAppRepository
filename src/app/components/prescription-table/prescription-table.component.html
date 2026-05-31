@@ -1,0 +1,29 @@
+<h2>Prescriptions</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Medical record ID</th>
+            <th>Medication Name</th>
+            <th>Dosage</th>
+            <th>Frequency</th>
+            <th>Duration</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let prescription of prescriptions">
+            <td>{{ prescription.id }}</td>
+            <td>{{ prescription.medicalRecordId }}</td>
+            <td>{{ medName[prescription.medName] }}</td>
+            <td>{{ prescription.dosage }}</td>
+            <td>{{ prescription.frequencyInHrs }}</td>
+            <td>{{ prescription.durationInDays }}</td>
+            <td>
+                <button (click)="updatePrescription(prescription.id)">Edit</button>
+                <button (click)="deletePrescription(prescription.id)">Delete</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
