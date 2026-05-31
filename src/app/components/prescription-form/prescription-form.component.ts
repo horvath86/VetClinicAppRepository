@@ -6,6 +6,8 @@ import {FormsModule} from "@angular/forms";
 import {CommonModule} from "@angular/common";
 import { PrescriptionDTO } from '../../models/prescriptionDTO';
 import { MedNameEnum } from '../../Enums/MedName.enum';
+import { MedicalRecordService } from '../../services/medical-record.service';
+import { MedicalRecord } from '../../models/medicalRecord';
 
 
 
@@ -21,6 +23,8 @@ export class PrescriptionFormComponent implements OnInit {
   isEditing: boolean = false;
   errorMessage: string = '';
 
+  medicalRecords: MedicalRecord[] = [];
+
   prescriptionDTO: PrescriptionDTO = {
     medicalRecordId: 0,
     medName: 0,
@@ -32,9 +36,10 @@ export class PrescriptionFormComponent implements OnInit {
   MedName = Object.values(MedNameEnum).filter(value => typeof value === 'string');
   selectedMedName: MedNameEnum = 0;
 
-  constructor(private prescriptionService: PrescriptionService, private router: Router, private route: ActivatedRoute) { }
+  constructor(private medicalRecordService: MedicalRecordService,private prescriptionService: PrescriptionService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.loadMedRecords();
     this.route.paramMap.subscribe((result)=>{
       const id = result.get("id");
       if(id)
@@ -54,6 +59,17 @@ export class PrescriptionFormComponent implements OnInit {
       }
 
     })
+  }
+
+  loadMedRecords(): void {
+    this.medicalRecordService.getMedicalRecords().subscribe({
+      next: (data: MedicalRecord[]) => {
+        this.medicalRecords = data;
+      },
+      error: () => {
+        this.errorMessage = "Error loading medical records";
+      }
+    });
   }
 
   onSubmit(): void {

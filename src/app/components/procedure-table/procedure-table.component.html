@@ -1,0 +1,27 @@
+<h2>Procedures</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Medical record ID</th>
+            <th>Procedure type</th>
+            <th>Notes</th>
+            <th>Anesthesia used</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let procedure of procedures">
+            <td>{{procedure.id}}</td>
+            <td>{{procedure.medicalRecordId}}</td>
+            <td>{{procedureType[procedure.procedureType]}}</td>
+            <td>{{procedure.notes}}</td>
+            <td>{{procedure.anesthesiaUsed ? 'Yes' : 'No'}}</td>
+            <td>
+                <button (click)="updateProcedure(procedure.id)">Edit</button>
+                <button (click)="deleteProcedure(procedure.id)">Delete</button>
+            </td>
+        </tr>
+    </tbody>
+</table>

@@ -1,0 +1,40 @@
+<h2>{{this.isEditing ? 'Edit' : 'Create'}} Procedure</h2>
+
+<div *ngIf="errorMessage!=''">
+    {{errorMessage}}
+</div>
+
+<form (ngSubmit)="onSubmit()">
+
+        <div>
+            <label for="medicalRecordID">Medical Record ID:</label>
+            <select name="medicalRecordID" id="medicalRecordID" [(ngModel)]="procedureDTO.medicalRecordId">
+                <option value="0" disabled selected>-- Select a Procedure --</option>
+                <option *ngFor="let medRec of medicalRecords" [value]="medRec.id">
+                    {{medRec.id}}
+                </option>
+            </select>>
+        </div>
+
+        <div>
+            <label for="procType">Procedure type:</label>
+            <select name="procType" [(ngModel)]="procedureDTO.procedureType">
+                <option *ngFor="let type of ProcType; let i = index" [ngValue]="i">{{type}}</option>
+            </select>
+        </div>
+
+        <div>
+            <label for="notes">Notes:</label>
+            <input type="text" name="notes" [(ngModel)]="procedureDTO.notes">
+        </div>
+
+        <div>
+            <label for="anesthesiaUsed">Anesthesia used:</label>
+            <input type="checkbox" name="anesthesiaUsed" [(ngModel)]="procedureDTO.anesthesiaUsed">
+        </div>
+
+         <div>
+            <button type="submit">{{ isEditing ? 'Edit' : 'Create' }} procedure</button>
+        </div>
+
+</form>

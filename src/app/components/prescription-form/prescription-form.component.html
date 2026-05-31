@@ -8,7 +8,13 @@
 
     <div>
         <label for="medicalRecordID">Medical Record ID:</label>
-        <input type="number" name="medicalRecordID" [(ngModel)]="prescriptionDTO.medicalRecordId">
+        <select name="medicalRecordID" id="medicalRecordID" [(ngModel)]="prescriptionDTO.medicalRecordId">
+            <option value="0" disabled selected>-- Select a Prescription --</option>
+            <option *ngFor="let medRec of medicalRecords" [value]="medRec.id">
+                {{medRec.id}}
+            </option>
+
+        </select>>
     </div>
     
     <div>
