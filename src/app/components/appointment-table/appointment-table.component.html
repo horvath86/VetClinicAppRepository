@@ -1,0 +1,25 @@
+<h2>Appointments</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Veterinarian</th>
+            <th>Date and time</th>
+            <th>Status</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let appontment of appointments">
+            <td>{{appontment.id}}</td>
+            <td>{{getVeterinarianName(appontment.vetId)}}</td>
+            <td>{{appontment.dateTime | date: 'yyyy.MM.dd - hh:mm a'}}</td>
+            <td>{{status[appontment.status]}}</td>
+            <td>
+                <button (click)="updateAppointment(appontment.id)">Edit</button>
+                <button (click)="deleteAppointment(appontment.id)">Delete</button>
+            </td>
+        </tr>
+    </tbody>
+</table>

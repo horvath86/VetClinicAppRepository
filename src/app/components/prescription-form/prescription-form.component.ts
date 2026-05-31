@@ -44,7 +44,7 @@ export class PrescriptionFormComponent implements OnInit {
       const id = result.get("id");
       if(id)
       {
-        this .isEditing = true;
+        this.isEditing = true;
         this.prescriptionService.getPrescriptionById(+id).subscribe({
           next: (response) => {
             this.prescriptionDTO = {
@@ -80,7 +80,7 @@ export class PrescriptionFormComponent implements OnInit {
       {
         this.prescriptionService.updatePrescription(+id,this.prescriptionDTO).subscribe({
           next: (response) => {
-            this.router.navigate(['/prescriptions'])
+            this.router.navigate(['/prescriptions']);
           },
           error: (error) => {
             this.errorMessage = 'Error updating prescription, Please try again.';

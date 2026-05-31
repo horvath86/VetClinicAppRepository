@@ -1,0 +1,35 @@
+<h2>{{ isEditing ? 'Edit' : 'Create' }} appointment</h2>
+
+<div *ngIf="errorMessage!=''">
+    {{ errorMessage }}
+</div>
+
+<form (ngSubmit)="onSubmit()">
+
+    <div>
+        <label for="vetId">Veterinarian:</label>
+        <select name="vetId" id="vetId" [(ngModel)]="appointmentDTO.vetId">
+            <option value="0" disabled selected>-- Select a veterinarian --</option>
+            <option *ngFor="let vet of veterinarians" [value]="vet.id">
+                {{vet.name}}
+            </option>
+        </select>
+    </div>
+
+    <div>
+        <label for="dateTime">Date and time:</label>
+        <input type="datetime-local" name="dateTime" [(ngModel)]="appointmentDTO.dateTime">
+    </div>
+
+    <div>
+        <label for="Status">Status:</label>
+        <select name="Status" [(ngModel)]="appointmentDTO.status">
+            <option *ngFor="let st of Status; let i=index" [ngValue]="i">{{st}}</option>
+        </select>
+    </div>
+
+     <div>
+        <button type="submit">{{isEditing ? 'Edit' : 'Create'}} medical record</button>
+    </div>
+
+</form>
