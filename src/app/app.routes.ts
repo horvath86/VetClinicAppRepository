@@ -11,12 +11,13 @@ import { ProcedureTableComponent } from './components/procedure-table/procedure-
 import { ProcedureFormComponent } from './components/procedure-form/procedure-form.component';
 import { AppointmentTableComponent } from './components/appointment-table/appointment-table.component';
 import { AppointmentFormComponent } from './components/appointment-form/appointment-form.component';
+import { HomeComponent } from './components/home/home.component';
 
 export const routes: Routes = [
-  { path: '', component: AnimalTableComponent },
-  { path: 'create', component: AnimalFormComponent },
-  { path: 'update/:id', component: AnimalFormComponent },
-  { path: 'animals', redirectTo: '', pathMatch: 'full' },
+  { path: '', component:HomeComponent},
+  { path: 'animals', component: AnimalTableComponent },
+  { path: 'createAnimal', component: AnimalFormComponent },
+  { path: 'updateAnimal/:id', component: AnimalFormComponent },
   { path: 'veterinarians', component: VeterinarianTableComponent },
   { path: 'createVeterinarian', component: VeterinarianFormComponent },
   { path: 'updateVeterinarian/:id', component: VeterinarianFormComponent },

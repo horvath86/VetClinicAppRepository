@@ -40,5 +40,9 @@ export class VeterinarianTableComponent implements OnInit{
     console.log('Update veterinarian with ID:', id);
   }
 
+  goToCreatePage()
+  {
+    this.router.navigate(['/createVeterinarian']);
+  }
 
 }

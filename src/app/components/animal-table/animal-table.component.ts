@@ -43,8 +43,13 @@ export class AnimalTableComponent implements OnInit
   }
 
   updateAnimal(id: number): void {
-    this.router.navigate([`/update/${id}`]);
+    this.router.navigate([`/updateAnimal/${id}`]);
     console.log('Update animal with ID:', id);
+  }
+
+  goToCreatePage()
+  {
+    this.router.navigate(['/createAnimal']);
   }
 
 }

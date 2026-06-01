@@ -78,4 +78,9 @@ export class MedicalRecordTableComponent implements OnInit {
   });
   }
 
+  goToCreatePage()
+  {
+    this.router.navigate(['/createMedicalRecord']);
+  }
+
 }

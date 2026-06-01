@@ -74,7 +74,7 @@ export class AnimalFormComponent implements OnInit {
       if (id) {
         this.animalService.UpdateAnimal(+id, this.animalDTO).subscribe({
           next: (response) => {
-            this.router.navigate(['/']);
+            this.router.navigate(['/animals']);
           },
           error: (error) => {            
             this.errorMessage = 'Error updating animal. Please try again.';
@@ -85,7 +85,7 @@ export class AnimalFormComponent implements OnInit {
     } else {
         this.animalService.CreateAnimal(this.animalDTO).subscribe({
         next: (response) => {
-        this.router.navigate(['/']);
+        this.router.navigate(['/animals']);
         },
        error: (error) => {
         this.errorMessage = 'Error creating animal. Please try again.';

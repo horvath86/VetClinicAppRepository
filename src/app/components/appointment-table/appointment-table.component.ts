@@ -64,4 +64,9 @@ export class AppointmentTableComponent implements OnInit{
     })
   }
 
+  goToCreatePage()
+  {
+    this.router.navigate(['/createAppointment']);
+  }
+
 }
