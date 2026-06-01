@@ -23,6 +23,8 @@ export class PrescriptionFormComponent implements OnInit {
   isEditing: boolean = false;
   errorMessage: string = '';
 
+  disableRecordSelect: boolean = false;
+
   medicalRecords: MedicalRecord[] = [];
 
   prescriptionDTO: PrescriptionDTO = {
@@ -59,6 +61,15 @@ export class PrescriptionFormComponent implements OnInit {
       }
 
     })
+
+    this.route.queryParams.subscribe((queryParams) => {
+      const urlRecordId = queryParams['medicalRecordId'];
+      
+      // If the parameter exists in the URL, apply it directly to your DTO
+      if (urlRecordId && !this.isEditing) {
+        this.prescriptionDTO.medicalRecordId = +urlRecordId;
+      }
+    });
   }
 
   loadMedRecords(): void {
@@ -92,7 +103,7 @@ export class PrescriptionFormComponent implements OnInit {
     }else{
       this.prescriptionService.createPrescription(this.prescriptionDTO).subscribe({
           next: (response) => {
-            this.router.navigate(['/prescriptions']);
+            this.router.navigate(['/medicalRecords']);
           },
           error: (error) => {
             this.errorMessage = 'Error creating prescription. Please try again.';

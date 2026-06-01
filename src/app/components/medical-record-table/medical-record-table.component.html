@@ -10,6 +10,8 @@
             <th>Symptoms</th>
             <th>Diagnosis</th>
             <th>Notes</th>
+            <th>View</th>
+            <th>AddCimponent</th>
             <th>Actions</th>
         </tr>
     </thead>
@@ -22,9 +24,28 @@
             <td>{{ record.symptoms }}</td>
             <td>{{ record.diagnosis }}</td>
             <td>{{ record.notes }}</td>
+            
+            <td>
+                <button (click)="showPrescriptionsbyID(record.id)">Prescriptions</button>
+                <button (click)="showProceduresbyID(record.id)">Procedures</button>
+            </td>
+            <td>
+                <button (click)="addPrescription(record.id)">Add prescriptions</button>
+            </td>
             <td>
                 <button (click)="updateMedicalRecord(record.id)">Edit</button>
                 <button (click)="deleteMedicalRecord(record.id)">Delete</button>
             </td>
         </tr>
+    </tbody>
 </table>
+
+ <hr class="my-5">
+
+  <!-- The Prescriptions component is always present here, but defaults to empty -->
+  <div class="mt-4">
+    <h4 *ngIf="prescriptionTable.selectedRecordId">
+  Prescriptions assigned to Record #{{ prescriptionTable.selectedRecordId }}
+</h4>
+    <app-prescription-table #prescriptionTable></app-prescription-table>
+  </div>
