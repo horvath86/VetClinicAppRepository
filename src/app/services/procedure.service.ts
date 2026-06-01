@@ -36,4 +36,8 @@ export class ProcedureService {
     return this.http.delete<void>(`${this.apiUrl}/${id}`);
   }
 
+  getProceduresByMedicalRecord(medicalRecordId: number): Observable<Procedure[]> {
+      return this.http.get<Procedure[]>(`${this.apiUrl}/ByMR/${medicalRecordId}`);
+    }
+
 }

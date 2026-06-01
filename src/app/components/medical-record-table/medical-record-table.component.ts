@@ -7,11 +7,12 @@ import { Veterinarian } from '../../models/veterinarian';
 import {VeterinarianService} from "../../services/veterinarian.service";
 import {forkJoin} from "rxjs";
 import { PrescriptionTableComponent } from '../prescription-table/prescription-table.component';
+import { ProcedureTableComponent } from '../procedure-table/procedure-table.component';
 
 @Component({
   selector: 'app-medical-record-table',
   standalone: true,
-  imports: [CommonModule, PrescriptionTableComponent],
+  imports: [CommonModule, PrescriptionTableComponent, ProcedureTableComponent],
   templateUrl: './medical-record-table.component.html',
   styleUrl: './medical-record-table.component.css'
 })
@@ -21,6 +22,7 @@ export class MedicalRecordTableComponent implements OnInit {
   veterinarians: Veterinarian[] = [];
 
   @ViewChild(PrescriptionTableComponent) prescriptionTable!: PrescriptionTableComponent;
+  @ViewChild(ProcedureTableComponent) procedureTable!: ProcedureTableComponent;
 
   constructor(private medicalRecordService: MedicalRecordService, private router: Router, private veterinarianService: VeterinarianService) { }
 
@@ -56,19 +58,22 @@ export class MedicalRecordTableComponent implements OnInit {
     console.log('Update medical record with ID:', id);
   }
 
-  showPrescriptionsbyID(id : number): void
+  showPresAndProcbyID(id : number): void
   {
     this.prescriptionTable.filterByMedicalRecord(id);
-  }
-
-  showProceduresbyID(int : number)
-  {
-
+    this.procedureTable.filterByMedicalRecord(id);
   }
 
   addPrescription(id: number)
   {
     this.router.navigate(['/createPrescription'], { 
+    queryParams: { medicalRecordId: id } 
+  });
+  }
+
+  addProcedure(id: number)
+  {
+    this.router.navigate(['/createProcedure'], { 
     queryParams: { medicalRecordId: id } 
   });
   }

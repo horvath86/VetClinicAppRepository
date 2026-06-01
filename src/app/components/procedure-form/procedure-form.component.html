@@ -8,12 +8,7 @@
 
         <div>
             <label for="medicalRecordID">Medical Record ID:</label>
-            <select name="medicalRecordID" id="medicalRecordID" [(ngModel)]="procedureDTO.medicalRecordId">
-                <option value="0" disabled selected>-- Select a Procedure --</option>
-                <option *ngFor="let medRec of medicalRecords" [value]="medRec.id">
-                    {{medRec.id}}
-                </option>
-            </select>>
+            <input type="number" name="medicalRecordID" id="medicalRecordID" [(ngModel)]="procedureDTO.medicalRecordId" readonly />
         </div>
 
         <div>

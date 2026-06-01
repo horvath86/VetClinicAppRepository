@@ -16,6 +16,7 @@ import { MedNameEnum } from '../../Enums/MedName.enum';
   templateUrl: './prescription-table.component.html',
   styleUrl: './prescription-table.component.css'
 })
+
 export class PrescriptionTableComponent implements OnInit {
 
   prescriptions: Prescription[] = [];
@@ -27,9 +28,11 @@ export class PrescriptionTableComponent implements OnInit {
 
   constructor( private prescriptionService: PrescriptionService, private router: Router, private route: ActivatedRoute) { }
 
+  //page initialization
   ngOnInit(): void {
     const medicalRecordId = this.route.snapshot.queryParamMap.get('medicalRecordId');    
     
+    //prefill form with medical record id
     if (medicalRecordId) {
       this.prescriptionForm.patchValue({ 
         medicalRecordId: +medicalRecordId 
@@ -38,6 +41,7 @@ export class PrescriptionTableComponent implements OnInit {
    
   }
 
+  //deleting prescription
   deletePrescription(id: number): void {
     this.prescriptionService.deletePrescription(id).subscribe({
       next: () => {
@@ -47,11 +51,13 @@ export class PrescriptionTableComponent implements OnInit {
     });
   }
 
+  //updating prescription
   updatePrescription(id: number): void {
     this.router.navigate([`/updatePrescription/${id}`]);
     console.log('Update prescription with ID:', id);
   }
   
+  //Filter prescriptions by medicalRecordID
   filterByMedicalRecord(medicalRecordId: number): void {
     this.selectedRecordId = medicalRecordId;
     

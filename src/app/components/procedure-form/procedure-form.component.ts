@@ -54,6 +54,15 @@ export class ProcedureFormComponent implements OnInit{
       }
       
     })
+
+    this.route.queryParams.subscribe((queryParams) => {
+      const urlRecordId = queryParams['medicalRecordId'];
+      
+      // If the parameter exists in the url and if editing
+      if (urlRecordId && !this.isEditing) {
+        this.procedureDTO.medicalRecordId = +urlRecordId;
+      }
+    });
     
   }
 
@@ -77,7 +86,7 @@ export class ProcedureFormComponent implements OnInit{
         {
             this.procedureService.updateProcedure(+id,this.procedureDTO).subscribe({
               next: (response) => {
-                this.router.navigate(['/procedures']);
+                this.router.navigate(['/medicalRecords']);
               },
               error : (error) => {
                 this.errorMessage = 'Error updating procedure. Please try again.';
@@ -88,7 +97,7 @@ export class ProcedureFormComponent implements OnInit{
       } else {
         this.procedureService.createProcedure(this.procedureDTO).subscribe({
           next: (response) => {
-            this.router.navigate(['/procedures']);
+            this.router.navigate(['/medicalRecords']);
           },
           error: (error) => {
             this.errorMessage = 'Error creating procedure. Please try again.';

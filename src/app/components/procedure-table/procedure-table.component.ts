@@ -4,9 +4,10 @@ import { Procedure } from '../../models/procedure';
 import { MedicalRecord } from '../../models/medicalRecord';
 import { ProcedureService } from '../../services/procedure.service';
 import { MedicalRecordService } from '../../services/medical-record.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { forkJoin } from 'rxjs';
 import { ProcedureType } from '../../Enums/ProcedureType.enum';
+import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-procedure-table',
@@ -21,11 +22,20 @@ export class ProcedureTableComponent implements OnInit{
   medicalRecords : MedicalRecord[] = [];
 
   procedureType = ProcedureType;
+  selectedRecordId: number | null = null;
+  prescriptionForm!: FormGroup;
 
-  constructor(private procedureService: ProcedureService, private medicalRecordService: MedicalRecordService, private router: Router){}
+  constructor(private procedureService: ProcedureService, private medicalRecordService: MedicalRecordService, private router: Router, private route: ActivatedRoute){}
 
   ngOnInit(): void {
-    this.loadData();
+    const medicalRecordId = this.route.snapshot.queryParamMap.get('medicalRecordId');  
+
+    //prefill form with medical record id
+    if (medicalRecordId) {
+      this.prescriptionForm.patchValue({ 
+        medicalRecordId: +medicalRecordId 
+      });
+    }
   }
 
   deleteProcedure(id: number):void{
@@ -44,17 +54,16 @@ export class ProcedureTableComponent implements OnInit{
     console.log('Update procedure with ID:', id);
   }
 
-  loadData(): void {
-    forkJoin({
-      procedures: this.procedureService.getAllProcedures(),
-      medicalRecords: this.medicalRecordService.getMedicalRecords()
-    }).subscribe({
-      next: (result) => {
-        this.procedures = result.procedures;
-        this.medicalRecords = result.medicalRecords;
+  //Filter prescriptions by medicalRecordID
+  filterByMedicalRecord(medicalRecordId: number): void {
+    this.selectedRecordId = medicalRecordId;
+    
+    this.procedureService.getProceduresByMedicalRecord(medicalRecordId).subscribe({
+      next: (data) => {
+        this.procedures = data;
       },
-      error: (err) => {
-        console.error('Error fetching data:', err);
+      error: (err) => { 
+        console.error('Error filtering prescriptions:', err); 
       }
     });
   }

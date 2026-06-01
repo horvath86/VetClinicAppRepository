@@ -65,7 +65,7 @@ export class PrescriptionFormComponent implements OnInit {
     this.route.queryParams.subscribe((queryParams) => {
       const urlRecordId = queryParams['medicalRecordId'];
       
-      // If the parameter exists in the URL, apply it directly to your DTO
+      // If the parameter exists in the url and if editing
       if (urlRecordId && !this.isEditing) {
         this.prescriptionDTO.medicalRecordId = +urlRecordId;
       }
@@ -91,7 +91,7 @@ export class PrescriptionFormComponent implements OnInit {
       {
         this.prescriptionService.updatePrescription(+id,this.prescriptionDTO).subscribe({
           next: (response) => {
-            this.router.navigate(['/prescriptions']);
+            this.router.navigate(['/medicalRecords']);
           },
           error: (error) => {
             this.errorMessage = 'Error updating prescription, Please try again.';
