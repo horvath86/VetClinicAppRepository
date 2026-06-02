@@ -12,28 +12,29 @@ import { ProcedureFormComponent } from './components/procedure-form/procedure-fo
 import { AppointmentTableComponent } from './components/appointment-table/appointment-table.component';
 import { AppointmentFormComponent } from './components/appointment-form/appointment-form.component';
 import { HomeComponent } from './components/home/home.component';
+import { authGuard } from './auth.guard';
 
 export const routes: Routes = [
   { path: '', component:HomeComponent},
-  { path: 'animals', component: AnimalTableComponent },
-  { path: 'createAnimal', component: AnimalFormComponent },
-  { path: 'updateAnimal/:id', component: AnimalFormComponent },
-  { path: 'veterinarians', component: VeterinarianTableComponent },
+  { path: 'animals', component: AnimalTableComponent, canActivate: [authGuard] },
+  { path: 'createAnimal', component: AnimalFormComponent, canActivate: [authGuard] },
+  { path: 'updateAnimal/:id', component: AnimalFormComponent, canActivate: [authGuard] },
+  { path: 'veterinarians', component: VeterinarianTableComponent , canActivate: [authGuard]},
   { path: 'createVeterinarian', component: VeterinarianFormComponent },
-  { path: 'updateVeterinarian/:id', component: VeterinarianFormComponent },
-  { path: 'medicalRecords', component: MedicalRecordTableComponent},
-  { path: "createMedicalRecord", component: MedicalRecordFormComponent },
-  { path: "updateMedicalRecord/:id", component: MedicalRecordFormComponent },
-  { path: "prescriptions", component: PrescriptionTableComponent },
-  { path: "createPrescription", component: PrescriptionFormComponent },
-  { path: "updatePrescription/:id", component: PrescriptionFormComponent },
-  { path: "procedures", component: ProcedureTableComponent},
-  { path: "createProcedure", component: ProcedureFormComponent},
-  { path: "updateProcedure/:id", component: ProcedureFormComponent},
-  { path: "appointments", component:AppointmentTableComponent},
-  { path: "createAppointment", component:AppointmentFormComponent},
-  { path: "updateAppointment/:id", component:AppointmentFormComponent}
-
+  { path: 'updateVeterinarian/:id', component: VeterinarianFormComponent , canActivate: [authGuard]},
+  { path: 'medicalRecords', component: MedicalRecordTableComponent, canActivate: [authGuard]},
+  { path: "createMedicalRecord", component: MedicalRecordFormComponent , canActivate: [authGuard]},
+  { path: "updateMedicalRecord/:id", component: MedicalRecordFormComponent, canActivate: [authGuard] },
+  { path: "prescriptions", component: PrescriptionTableComponent , canActivate: [authGuard]},
+  { path: "createPrescription", component: PrescriptionFormComponent , canActivate: [authGuard]},
+  { path: "updatePrescription/:id", component: PrescriptionFormComponent , canActivate: [authGuard]},
+  { path: "procedures", component: ProcedureTableComponent, canActivate: [authGuard]},
+  { path: "createProcedure", component: ProcedureFormComponent, canActivate: [authGuard]},
+  { path: "updateProcedure/:id", component: ProcedureFormComponent, canActivate: [authGuard]},
+  { path: "appointments", component:AppointmentTableComponent, canActivate: [authGuard]},
+  { path: "createAppointment", component:AppointmentFormComponent, canActivate: [authGuard]},
+  { path: "updateAppointment/:id", component:AppointmentFormComponent, canActivate: [authGuard] },
+  {path: '**', redirectTo: '' }
 
   
 ];

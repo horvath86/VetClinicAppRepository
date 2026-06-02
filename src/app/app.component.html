@@ -1,13 +1,39 @@
-<nav>
 
-    <a routerLink="">Home</a>
-    <a routerLink="appointments">Appointments</a>
-    <a routerLink="animals">Animals</a>
-    <a routerLink="medicalRecords">Medical Records</a>
-    <a routerLink="veterinarians">Veterinarians</a>
-    
+  <nav>
     
 
+    @if (authService.isLoggedIn()) {
+        <div class="nav-left">
+            <a routerLink="appointments">Appointments</a>
+            <a routerLink="animals">Animals</a>
+            <a routerLink="medicalRecords">Medical Records</a>
+            <a routerLink="veterinarians">Veterinarians</a>
+        </div>
+
+        <div class="nav-right">
+            <div class="user-profile">
+            <span>Welcome, <strong>{{ authService.getCurrentUser() }}</strong></span>
+            <button (click)="onLogout()">Log Out</button>
+            </div>
+        </div>
+
+      } @else {
+        
+        <div class="nav-right">
+          <a routerLink="/">Home</a>
+        <form (ngSubmit)="onNavbarLoginSubmit()">
+          <input type="text" [(ngModel)]="credentials.username" name="username" placeholder="Username" required/>
+          <input type="password" [(ngModel)]="credentials.password" name="password" placeholder="Password" required/>
+          <button type="submit">Log In</button>
+          
+          @if (errorMessage) {
+            <span >{{ errorMessage }}</span>
+          }
+        
+        </form>
+        </div>
+      }
+    
 </nav>
 
 <router-outlet />
