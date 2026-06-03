@@ -1,35 +1,35 @@
-<h2>{{this.isEditing ? 'Edit' : 'Create'}} Procedure</h2>
+<h2 class="text-center my-5">{{this.isEditing ? 'Edit' : 'Create'}} Procedure</h2>
 
 <div *ngIf="errorMessage!=''">
     {{errorMessage}}
 </div>
 
-<form (ngSubmit)="onSubmit()">
+<form class="border rounded p-3 w-50 mb-5 mx-auto" (ngSubmit)="onSubmit()">
 
-        <div>
-            <label for="medicalRecordID">Medical Record ID:</label>
-            <input type="number" name="medicalRecordID" id="medicalRecordID" [(ngModel)]="procedureDTO.medicalRecordId" readonly />
+        <div class="mb-3">
+            <label class="form-label" for="medicalRecordID">Medical Record ID:</label>
+            <input type="number" class="form-control" name="medicalRecordID" id="medicalRecordID" [(ngModel)]="procedureDTO.medicalRecordId" readonly />
         </div>
 
-        <div>
-            <label for="procType">Procedure type:</label>
-            <select name="procType" [(ngModel)]="procedureDTO.procedureType">
+        <div class="mb-3">
+            <label class="form-label" for="procType">Procedure type:</label>
+            <select class="form-select" name="procType" [(ngModel)]="procedureDTO.procedureType">
                 <option *ngFor="let type of ProcType; let i = index" [ngValue]="i">{{type}}</option>
             </select>
         </div>
 
-        <div>
-            <label for="notes">Notes:</label>
-            <input type="text" name="notes" [(ngModel)]="procedureDTO.notes">
+        <div class="mb-3">
+            <label class="form-label" for="notes">Notes:</label>
+            <input type="text" class="form-control" name="notes" [(ngModel)]="procedureDTO.notes">
         </div>
 
-        <div>
-            <label for="anesthesiaUsed">Anesthesia used:</label>
-            <input type="checkbox" name="anesthesiaUsed" [(ngModel)]="procedureDTO.anesthesiaUsed">
+        <div class="mb-3">
+            <label class="form-label" for="anesthesiaUsed">Anesthesia used:</label>
+            <input type="checkbox" class="form-check-input" name="anesthesiaUsed" [(ngModel)]="procedureDTO.anesthesiaUsed">
         </div>
 
          <div>
-            <button type="submit">{{ isEditing ? 'Edit' : 'Create' }} procedure</button>
+            <button class="btn btn-primary" type="submit">{{ isEditing ? 'Edit' : 'Create' }} procedure</button>
         </div>
 
 </form>

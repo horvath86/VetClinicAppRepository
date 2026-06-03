@@ -1,39 +1,39 @@
-<h2>{{ this.isEditing ? 'Edit' : 'Create' }} Prescription</h2>
+<h2 class="text-center my-5">{{ this.isEditing ? 'Edit' : 'Create' }} Prescription</h2>
 
 <div *ngIf="errorMessage!=''">
     {{ errorMessage }}
 </div>
 
-<form (ngSubmit)="onSubmit()">
+<form class="border rounded p-3 w-50 mb-5 mx-auto" (ngSubmit)="onSubmit()">
 
-    <div>
-        <label for="medicalRecordID">Medical Record ID:</label>
-        <input type="number" name="medicalRecordID" id="medicalRecordID" [(ngModel)]="prescriptionDTO.medicalRecordId" readonly />
+    <div class="mb-3">
+        <label class="form-label" for="medicalRecordID">Medical Record ID:</label>
+        <input type="number" class="form-control" name="medicalRecordID" id="medicalRecordID" [(ngModel)]="prescriptionDTO.medicalRecordId" readonly />
     </div>
-    
-    <div>
-        <label for="medName">Medication Name:</label>
-        <select name="medName" [(ngModel)]="prescriptionDTO.medName">
+
+    <div class="mb-3">
+        <label class="form-label" for="medName">Medication Name:</label>
+        <select class="form-select" name="medName" [(ngModel)]="prescriptionDTO.medName">
             <option *ngFor="let med of MedName; let i = index" [ngValue]="i">{{ med }}</option>
         </select>
     </div>
 
-    <div>
-        <label for="dosage">Dosage:</label>
-        <input type="number" name="dosage" [(ngModel)]="prescriptionDTO.dosage">
+    <div class="mb-3">
+        <label class="form-label" for="dosage">Dosage:</label>
+        <input type="number" class="form-control" name="dosage" [(ngModel)]="prescriptionDTO.dosage">
     </div>
 
-    <div>
-        <label for="frequencyInHrs">Frequency (hours):</label>
-        <input type="number" name="frequencyInHrs" [(ngModel)]="prescriptionDTO.frequencyInHrs">
+    <div class="mb-3">
+        <label class="form-label" for="frequencyInHrs">Frequency (hours):</label>
+        <input type="number" class="form-control" name="frequencyInHrs" [(ngModel)]="prescriptionDTO.frequencyInHrs">
     </div>
 
-    <div>
-        <label for="durationInDays">Duration (days):</label>
-        <input type="number" name="durationInDays" [(ngModel)]="prescriptionDTO.durationInDays">
+    <div class="mb-3">
+        <label class="form-label" for="durationInDays">Duration (days):</label>
+        <input type="number" class="form-control" name="durationInDays" [(ngModel)]="prescriptionDTO.durationInDays">
     </div>
     
     <div>
-        <button type="submit">{{ isEditing ? 'Edit' : 'Create' }} prescription</button>
+        <button class="btn btn-primary" type="submit">{{ isEditing ? 'Edit' : 'Create' }} prescription</button>
     </div>
 </form>

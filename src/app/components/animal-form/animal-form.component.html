@@ -1,51 +1,51 @@
-<h2>{{ isEditing ? 'Edit' : 'Create' }} animal</h2>
+<h2 class="text-center my-5"> {{ isEditing ? 'Edit' : 'Create' }} animal</h2>
 
 <div *ngIf="errorMessage!=''">
     {{ errorMessage }}
 </div>
 
-<form (ngSubmit)="onSubmit()">
+<form class="border rounded p-3 w-50 mb-5 mx-auto" (ngSubmit)="onSubmit()">
 
-    <div>
-        <label for="name">Name:</label>
-        <input type="text" name="name" [(ngModel)]="animalDTO.name">
+    <div class="mb-3">
+        <label class="form-label" for="name">Name:</label>
+        <input type="text" name="name" class="form-control" [(ngModel)]="animalDTO.name">
     </div>
     
-    <div>
-        <label for="species">Species:</label>
-        <select name="species" [(ngModel)]="animalDTO.species">
+    <div class="mb-3">
+        <label class="form-label" for="species">Species:</label>
+        <select name="species" class="form-select" [(ngModel)]="animalDTO.species">
             <option *ngFor="let species of Species; let i = index" [ngValue]="i">
                 {{ species }}
             </option>
         </select>
     </div>
     
-    <div>
-        <label for="dateOfBirth">Date of Birth:</label>
-        <input type="date" name="dateOfBirth" [(ngModel)]="animalDTO.dateOfBirth">
+    <div class="mb-3">
+        <label class="form-label" for="dateOfBirth">Date of Birth:</label>
+        <input type="date" name="dateOfBirth" class="form-control" [(ngModel)]="animalDTO.dateOfBirth">
     </div>
     
-    <div>
-        <label for="gender">Gender:</label>
-        <select name="gender" [(ngModel)]="animalDTO.gender">
+    <div class="mb-3">
+        <label class="form-label" for="gender">Gender:</label>
+        <select name="gender" class="form-select" [(ngModel)]="animalDTO.gender">
             <option *ngFor="let gender of Gender; let i = index" [ngValue]="i">
                 {{ gender }}
             </option>
         </select>
     </div>
     
-    <div>
-        <label for="ownerName">Owner Name:</label>
-        <input type="text" name="ownerName" [(ngModel)]="animalDTO.ownerName">
+    <div class="mb-3">
+        <label class="form-label" for="ownerName">Owner Name:</label>
+        <input type="text" name="ownerName" class="form-control" [(ngModel)]="animalDTO.ownerName">
+    </div>
+    
+    <div class="mb-3">
+        <label class="form-label" for="phone">Phone:</label>
+        <input type="tel" name="phone" class="form-control" [(ngModel)]="animalDTO.phone">
     </div>
     
     <div>
-        <label for="phone">Phone:</label>
-        <input type="tel" name="phone" [(ngModel)]="animalDTO.phone">
-    </div>
-    
-    <div>
-        <button type="submit">{{ isEditing ? 'Edit' : 'Create' }} animal</button>
+        <button class="btn btn-primary" type="submit">{{ isEditing ? 'Edit' : 'Create' }} animal</button>
     </div>
     
 </form>

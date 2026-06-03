@@ -1,31 +1,31 @@
-<h2>{{ isEditing ? 'Edit' : 'Add' }} veterinarian</h2>
+<h2 class="text-center my-5">{{ isEditing ? 'Edit' : 'Add' }} veterinarian</h2>
 
 <div *ngIf="errorMessage!=''">
     {{ errorMessage }}  
 </div>
 
-<form (ngSubmit)="onSubmit()">
+<form class="border rounded p-3 w-50 mb-5 mx-auto" (ngSubmit)="onSubmit()">
 
-    <div>
-        <label for="name">Name:</label>
-        <input type="text" name="name" [(ngModel)]="veterinarianDTO.name">
+    <div class="mb-3">
+        <label class="form-label" for="name">Name:</label>
+        <input type="text" class="form-control" name="name" [(ngModel)]="veterinarianDTO.name">
+    </div>
+    
+    <div class="mb-3">
+        <label class="form-label" for="email">Email:</label>
+        <input type="email" class="form-control" name="email" [(ngModel)]="veterinarianDTO.email">
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label" for="password">Password:</label>
+        <input type="password" class="form-control" name="password" [(ngModel)]="veterinarianDTO.password">
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label" for="passConfirm">Confirm Password:</label>
+        <input type="password" class="form-control" name="passConfirm" [(ngModel)]="veterinarianDTO.passConfirm">
     </div>
     
     <div>
-        <label for="email">Email:</label>
-        <input type="email" name="email" [(ngModel)]="veterinarianDTO.email">
-    </div>
-
-    <div>
-        <label for="password">Password:</label>
-        <input type="password" name="password" [(ngModel)]="veterinarianDTO.password">
-    </div>
-
-    <div>
-        <label for="passConfirm">Confirm Password:</label>
-        <input type="password" name="passConfirm" [(ngModel)]="veterinarianDTO.passConfirm">
-    </div>
-    
-    <div>
-        <button type="submit">{{ isEditing ? 'Edit' : 'Add' }} veterinarian</button>
+        <button class="btn btn-primary" type="submit">{{ isEditing ? 'Edit' : 'Add' }} veterinarian</button>
     </div>
