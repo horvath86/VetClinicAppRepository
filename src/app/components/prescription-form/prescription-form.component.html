@@ -12,25 +12,34 @@
     </div>
 
     <div class="mb-3">
-        <label class="form-label" for="medName">Medication Name:</label>
+        <label class="form-label" for="medName">Medication Name:*</label>
         <select class="form-select" name="medName" [(ngModel)]="prescriptionDTO.medName">
             <option *ngFor="let med of MedName; let i = index" [ngValue]="i">{{ med }}</option>
         </select>
     </div>
 
     <div class="mb-3">
-        <label class="form-label" for="dosage">Dosage:</label>
-        <input type="number" class="form-control" name="dosage" [(ngModel)]="prescriptionDTO.dosage">
+        <label class="form-label" for="dosage">Dosage:*</label>
+        <input required #dosage="ngModel" type="number" class="form-control" name="dosage" [(ngModel)]="prescriptionDTO.dosage">
+        <div *ngIf="dosage.invalid && (dosage.touched || dosage.dirty)" class="text-danger">
+            Dosage is required.
+        </div>
     </div>
 
     <div class="mb-3">
-        <label class="form-label" for="frequencyInHrs">Frequency (hours):</label>
-        <input type="number" class="form-control" name="frequencyInHrs" [(ngModel)]="prescriptionDTO.frequencyInHrs">
+        <label class="form-label" for="frequencyInHrs">Frequency (hours)*:</label>
+        <input required #frequencyInHrs="ngModel" type="number" class="form-control" name="frequencyInHrs" [(ngModel)]="prescriptionDTO.frequencyInHrs">
+        <div *ngIf="frequencyInHrs.invalid && (frequencyInHrs.touched || frequencyInHrs.dirty)" class="text-danger">
+            Frequency in hours is required.
+        </div>
     </div>
 
     <div class="mb-3">
-        <label class="form-label" for="durationInDays">Duration (days):</label>
-        <input type="number" class="form-control" name="durationInDays" [(ngModel)]="prescriptionDTO.durationInDays">
+        <label class="form-label" for="durationInDays">Duration (days)*:</label>
+        <input required #durationInDays="ngModel" type="number" class="form-control" name="durationInDays" [(ngModel)]="prescriptionDTO.durationInDays">
+        <div *ngIf="durationInDays.invalid && (durationInDays.touched || durationInDays.dirty)" class="text-danger">
+            Duration in days is required.
+        </div>
     </div>
     
     <div>

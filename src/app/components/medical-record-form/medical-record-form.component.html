@@ -7,7 +7,7 @@
 <form class="border rounded p-3 w-50 mb-5 mx-auto" (ngSubmit)="onSubmit()">
 
     <div class="mb-3">
-    <label class="form-label" for="animalId">Animal:</label>
+    <label class="form-label" for="animalId">Animal:*</label>
     <select name="animalId" id="animalId" class="form-select" [(ngModel)]="medicalRecordDTO.animalId">
         <option value="0" disabled selected>-- Select an Animal --</option>
         <option *ngFor="let animal of animals" [value]="animal.id">
@@ -17,7 +17,7 @@
     </div>
 
     <div class="mb-3">
-    <label class="form-label" for="vetId">Veterinarian:</label>
+    <label class="form-label" for="vetId">Veterinarian:*</label>
     <select name="vetId" id="vetId" class="form-select" [(ngModel)]="medicalRecordDTO.vetId">
         <option value="0" disabled selected>-- Select a Veterinarian --</option>
         <option *ngFor="let vet of veterinarians" [value]="vet.id">
@@ -27,18 +27,27 @@
     </div>
 
     <div class="mb-3">
-        <label class="form-label" for="visitDate">Visit date:</label>
-        <input type="date" class="form-control" name="visitDate" [(ngModel)]="medicalRecordDTO.visitDate">
+        <label class="form-label" for="visitDate">Visit date:*</label>
+        <input required #visitDate="ngModel" type="date" class="form-control" name="visitDate" [(ngModel)]="medicalRecordDTO.visitDate">
+        <div *ngIf="visitDate.invalid && (visitDate.touched || visitDate.dirty)" class="text-danger">
+            Visit date is required.
+        </div>
     </div>
 
     <div class="mb-3">
-        <label class="form-label" for="symptoms">Symptoms:</label>
-        <input type="text" class="form-control" name="symptoms" [(ngModel)]="medicalRecordDTO.symptoms">
+        <label class="form-label" for="symptoms">Symptoms:*</label>
+        <input required #symptoms="ngModel" type="text" class="form-control" name="symptoms" [(ngModel)]="medicalRecordDTO.symptoms">
+        <div *ngIf="symptoms.invalid && (symptoms.touched || symptoms.dirty)" class="text-danger">
+            Symptoms are required.
+        </div>
     </div>
 
     <div class="mb-3">
-        <label class="form-label" for="diagnosis">Diagnosis:</label>
-        <input type="text" class="form-control" name="diagnosis" [(ngModel)]="medicalRecordDTO.diagnosis">
+        <label class="form-label" for="diagnosis">Diagnosis:*</label>
+        <input required #diagnosis="ngModel" type="text" class="form-control" name="diagnosis" [(ngModel)]="medicalRecordDTO.diagnosis">
+        <div *ngIf="diagnosis.invalid && (diagnosis.touched || diagnosis.dirty)" class="text-danger">
+            Diagnosis is required.
+        </div>
     </div>
 
     <div class="mb-3">

@@ -7,7 +7,7 @@
 <form class="border rounded p-3 w-50 mb-5 mx-auto" (ngSubmit)="onSubmit()">
 
     <div class="mb-3">
-        <label class="form-label" for="vetId">Veterinarian:</label>
+        <label class="form-label" for="vetId">Veterinarian:*</label>
         <select class="form-select" name="vetId" id="vetId" [(ngModel)]="appointmentDTO.vetId">
             <option value="0" disabled selected>-- Select a veterinarian --</option>
             <option *ngFor="let vet of veterinarians" [value]="vet.id">
@@ -17,12 +17,15 @@
     </div>
 
     <div class="mb-3">
-        <label class="form-label" for="dateTime">Date and time:</label>
-        <input type="datetime-local" class="form-control" name="dateTime" [(ngModel)]="appointmentDTO.dateTime">
+        <label class="form-label" for="dateTime">Date and time:*</label>
+        <input required #dateTime="ngModel" type="datetime-local" class="form-control" name="dateTime" [(ngModel)]="appointmentDTO.dateTime">
+        <div *ngIf="dateTime.invalid && (dateTime.touched || dateTime.dirty)" class="text-danger">
+            Date and time is required.
+        </div>
     </div>
 
     <div class="mb-3">
-        <label class="form-label" for="Status">Status:</label>
+        <label class="form-label" for="Status">Status:*</label>
         <select class="form-select" name="Status" [(ngModel)]="appointmentDTO.status">
             <option *ngFor="let st of Status; let i=index" [ngValue]="i">{{st}}</option>
         </select>

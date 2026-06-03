@@ -1,18 +1,21 @@
 <h2 class="text-center my-5"> {{ isEditing ? 'Edit' : 'Create' }} animal</h2>
 
-<div *ngIf="errorMessage!=''">
+<div class="text-danger text-center" *ngIf="errorMessage!=''">
     {{ errorMessage }}
 </div>
 
 <form class="border rounded p-3 w-50 mb-5 mx-auto" (ngSubmit)="onSubmit()">
 
     <div class="mb-3">
-        <label class="form-label" for="name">Name:</label>
-        <input type="text" name="name" class="form-control" [(ngModel)]="animalDTO.name">
+        <label class="form-label" for="name">Name:*</label>
+        <input #name="ngModel" required type="text" name="name" class="form-control" [(ngModel)]="animalDTO.name">
+        <div *ngIf="name.invalid && (name.touched || name.dirty)" class="text-danger">
+            Name is required.
+        </div>
     </div>
     
     <div class="mb-3">
-        <label class="form-label" for="species">Species:</label>
+        <label class="form-label" for="species">Species:*</label>
         <select name="species" class="form-select" [(ngModel)]="animalDTO.species">
             <option *ngFor="let species of Species; let i = index" [ngValue]="i">
                 {{ species }}
@@ -21,12 +24,15 @@
     </div>
     
     <div class="mb-3">
-        <label class="form-label" for="dateOfBirth">Date of Birth:</label>
-        <input type="date" name="dateOfBirth" class="form-control" [(ngModel)]="animalDTO.dateOfBirth">
+        <label class="form-label" for="dateOfBirth">Date of Birth:*</label>
+        <input #dateOfBirth="ngModel" required type="date" name="dateOfBirth" class="form-control" [(ngModel)]="animalDTO.dateOfBirth">
+        <div *ngIf="dateOfBirth.invalid && (dateOfBirth.touched || dateOfBirth.dirty)" class="text-danger">
+            Date of Birth is required.
+        </div>
     </div>
     
     <div class="mb-3">
-        <label class="form-label" for="gender">Gender:</label>
+        <label class="form-label" for="gender">Gender:*</label>
         <select name="gender" class="form-select" [(ngModel)]="animalDTO.gender">
             <option *ngFor="let gender of Gender; let i = index" [ngValue]="i">
                 {{ gender }}
@@ -35,13 +41,19 @@
     </div>
     
     <div class="mb-3">
-        <label class="form-label" for="ownerName">Owner Name:</label>
-        <input type="text" name="ownerName" class="form-control" [(ngModel)]="animalDTO.ownerName">
+        <label class="form-label" for="ownerName">Owner Name:*</label>
+        <input #ownerName="ngModel" required type="text" name="ownerName" class="form-control" [(ngModel)]="animalDTO.ownerName">
+        <div *ngIf="ownerName.invalid && (ownerName.touched || ownerName.dirty)" class="text-danger">
+            Owner Name is required.
+        </div>
     </div>
     
     <div class="mb-3">
-        <label class="form-label" for="phone">Phone:</label>
-        <input type="tel" name="phone" class="form-control" [(ngModel)]="animalDTO.phone">
+        <label class="form-label" for="phone">Phone:*</label>
+        <input #phone="ngModel" required type="tel" name="phone" class="form-control" [(ngModel)]="animalDTO.phone">
+        <div *ngIf="phone.invalid && (phone.touched || phone.dirty)" class="text-danger">
+            Phone is required.
+        </div>
     </div>
     
     <div>

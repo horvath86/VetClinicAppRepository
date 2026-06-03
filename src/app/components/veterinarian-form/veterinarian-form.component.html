@@ -1,29 +1,46 @@
 <h2 class="text-center my-5">{{ isEditing ? 'Edit' : 'Add' }} veterinarian</h2>
 
-<div *ngIf="errorMessage!=''">
+<div class="text-danger text-center" *ngIf="errorMessage!=''">
     {{ errorMessage }}  
 </div>
 
 <form class="border rounded p-3 w-50 mb-5 mx-auto" (ngSubmit)="onSubmit()">
 
     <div class="mb-3">
-        <label class="form-label" for="name">Name:</label>
-        <input type="text" class="form-control" name="name" [(ngModel)]="veterinarianDTO.name">
+        <label class="form-label" for="name">Name:*</label>
+        <input required #name="ngModel" type="text" class="form-control" name="name" [(ngModel)]="veterinarianDTO.name">
+        <div *ngIf="name.invalid && (name.touched || name.dirty)" class="text-danger">
+            Name is required.
+        </div>
     </div>
     
     <div class="mb-3">
-        <label class="form-label" for="email">Email:</label>
-        <input type="email" class="form-control" name="email" [(ngModel)]="veterinarianDTO.email">
+        <label class="form-label" for="email">Email:*</label>
+        <input required #email="ngModel" type="email" class="form-control" name="email" [(ngModel)]="veterinarianDTO.email">
+        <div *ngIf="email.invalid && (email.touched || email.dirty)" class="text-danger">
+            <div *ngIf="email.errors?.['required']" class="text-danger">
+                Email is required.
+            </div>
+            <div *ngIf="email.errors?.['email']" class="text-danger">
+                Please enter a valid email address.
+            </div>
+        </div>
     </div>
 
     <div class="mb-3">
-        <label class="form-label" for="password">Password:</label>
-        <input type="password" class="form-control" name="password" [(ngModel)]="veterinarianDTO.password">
+        <label class="form-label" for="password">Password:*</label>
+        <input required #password="ngModel" type="password" class="form-control" name="password" [(ngModel)]="veterinarianDTO.password">
+        <div *ngIf="password.invalid && (password.touched || password.dirty)" class="text-danger">
+            Password is required.
+        </div>
     </div>
 
     <div class="mb-3">
-        <label class="form-label" for="passConfirm">Confirm Password:</label>
-        <input type="password" class="form-control" name="passConfirm" [(ngModel)]="veterinarianDTO.passConfirm">
+        <label class="form-label" for="passConfirm">Confirm Password:*</label>
+        <input required #passConfirm="ngModel" type="password" class="form-control" name="passConfirm" [(ngModel)]="veterinarianDTO.passConfirm">
+        <div *ngIf="passConfirm.invalid && (passConfirm.touched || passConfirm.dirty)" class="text-danger">
+            Please confirm your password.
+        </div>
     </div>
     
     <div>

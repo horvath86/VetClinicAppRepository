@@ -12,20 +12,23 @@
         </div>
 
         <div class="mb-3">
-            <label class="form-label" for="procType">Procedure type:</label>
+            <label class="form-label" for="procType">Procedure type:*</label>
             <select class="form-select" name="procType" [(ngModel)]="procedureDTO.procedureType">
                 <option *ngFor="let type of ProcType; let i = index" [ngValue]="i">{{type}}</option>
             </select>
         </div>
 
         <div class="mb-3">
-            <label class="form-label" for="notes">Notes:</label>
-            <input type="text" class="form-control" name="notes" [(ngModel)]="procedureDTO.notes">
+            <label class="form-label" for="notes">Notes:*</label>
+            <input required #notes="ngModel" type="text" class="form-control" name="notes" [(ngModel)]="procedureDTO.notes">
+            <div *ngIf="notes.invalid && (notes.touched || notes.dirty)" class="text-danger">
+                Notes are required.
+            </div>
         </div>
 
         <div class="mb-3">
-            <label class="form-label" for="anesthesiaUsed">Anesthesia used:</label>
-            <input type="checkbox" class="form-check-input" name="anesthesiaUsed" [(ngModel)]="procedureDTO.anesthesiaUsed">
+            <label class="form-label" for="anesthesiaUsed">Anesthesia used:*</label>
+            <input type="checkbox" class="form-check-input mx-3 border-secondary" name="anesthesiaUsed" [(ngModel)]="procedureDTO.anesthesiaUsed">
         </div>
 
          <div>
