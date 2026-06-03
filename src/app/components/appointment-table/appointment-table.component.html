@@ -1,6 +1,13 @@
-<h2>Appointments</h2>
-<button (click)="goToCreatePage()">Create new appointment</button>
-<table>
+<h2 class="text-center">Appointments</h2>
+<div class="d-flex justify-content-center">
+  <button class="btn btn-primary btn-lg mb-3" (click)="goToCreatePage()">Schedule new appointment</button>
+</div>
+<div class="card">
+  <div class="card-header">
+    <h5>Appointment Information</h5>
+  </div>
+  <div class="card-body">
+    <table class="table table-hover">
     <thead>
         <tr>
             <th>ID</th>
@@ -17,9 +24,11 @@
             <td>{{appontment.dateTime | date: 'yyyy.MM.dd - hh:mm a'}}</td>
             <td>{{status[appontment.status]}}</td>
             <td>
-                <button (click)="updateAppointment(appontment.id)">Edit</button>
-                <button (click)="deleteAppointment(appontment.id)">Delete</button>
+                <button class="btn btn-sm btn-primary me-2" (click)="updateAppointment(appontment.id)">Edit</button>
+                <button class="btn btn-sm btn-danger" (click)="deleteAppointment(appontment.id)">Delete</button>
             </td>
         </tr>
     </tbody>
 </table>
+  </div>
+</div>

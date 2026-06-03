@@ -1,6 +1,15 @@
-<h2>Medical Records</h2>
-<button (click)="goToCreatePage()">Create new medical record</button>
-<table>
+<h2 class="text-center">Medical Records</h2>
+
+<div class="d-flex justify-content-center">
+  <button class="btn btn-primary btn-lg mb-3" (click)="goToCreatePage()">Create new medical record</button>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <h5>Medical Record Information</h5>
+  </div>
+  <div class="card-body">
+    <table class="table table-hover">
     <thead>
         <tr>
             <th>ID</th>
@@ -26,20 +35,21 @@
             <td>{{ record.notes }}</td>
             
             <td>
-                <button (click)="showPresAndProcbyID(record.id)">View data</button>
+                <button class="btn btn-sm btn-secondary" (click)="showPresAndProcbyID(record.id)">View data</button>
             </td>
             <td>
-                <button (click)="addPrescription(record.id)">Add prescriptions</button>
-                <button (click)="addProcedure(record.id)">Add procedure</button>
+                <button class="btn btn-sm btn-success me-2" (click)="addPrescription(record.id)">Add prescriptions</button>
+                <button class="btn btn-sm btn-success" (click)="addProcedure(record.id)">Add procedure</button>
             </td>
             <td>
-                <button (click)="updateMedicalRecord(record.id)">Edit</button>
-                <button (click)="deleteMedicalRecord(record.id)">Delete</button>
+                <button class="btn btn-sm btn-primary me-2" (click)="updateMedicalRecord(record.id)">Edit</button>
+                <button class="btn btn-sm btn-danger" (click)="deleteMedicalRecord(record.id)">Delete</button>
             </td>
         </tr>
     </tbody>
 </table>
-
+</div>
+</div>
  <hr class="my-5">
 
 
