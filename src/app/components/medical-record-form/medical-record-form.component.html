@@ -1,6 +1,6 @@
 <h2 class="text-center my-5">{{isEditing ? 'Edit Medical Record' : 'Create Medical Record'}}</h2>
 
-<div *ngIf="errorMessage!=''">
+<div class="text-danger text-center" *ngIf="errorMessage!=''">
     {{ errorMessage }}  
 </div>
 
@@ -36,7 +36,7 @@
 
     <div class="mb-3">
         <label class="form-label" for="symptoms">Symptoms:*</label>
-        <input required #symptoms="ngModel" type="text" class="form-control" name="symptoms" [(ngModel)]="medicalRecordDTO.symptoms">
+        <textarea required #symptoms="ngModel" class="form-control" name="symptoms" [(ngModel)]="medicalRecordDTO.symptoms"></textarea>
         <div *ngIf="symptoms.invalid && (symptoms.touched || symptoms.dirty)" class="text-danger">
             Symptoms are required.
         </div>
@@ -44,7 +44,7 @@
 
     <div class="mb-3">
         <label class="form-label" for="diagnosis">Diagnosis:*</label>
-        <input required #diagnosis="ngModel" type="text" class="form-control" name="diagnosis" [(ngModel)]="medicalRecordDTO.diagnosis">
+        <textarea required #diagnosis="ngModel" class="form-control" name="diagnosis" [(ngModel)]="medicalRecordDTO.diagnosis"></textarea>
         <div *ngIf="diagnosis.invalid && (diagnosis.touched || diagnosis.dirty)" class="text-danger">
             Diagnosis is required.
         </div>
@@ -52,7 +52,7 @@
 
     <div class="mb-3">
         <label class="form-label" for="notes">Notes:</label>
-        <input type="text" class="form-control" name="notes" [(ngModel)]="medicalRecordDTO.notes">
+        <textarea class="form-control" name="notes" [(ngModel)]="medicalRecordDTO.notes"></textarea>
     </div>
 
     <div>

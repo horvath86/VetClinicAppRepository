@@ -29,19 +29,31 @@
             <td>{{ record.id }}</td>
             <td>{{ record.animalId }}</td>
             <td>{{ getVeterinarianName(record.vetId) }}</td>
-            <td>{{ record.visitDate | date }}</td>
-            <td>{{ record.symptoms }}</td>
-            <td>{{ record.diagnosis }}</td>
-            <td>{{ record.notes }}</td>
-            
+            <td class="text-nowrap">{{ record.visitDate | date }}</td>
             <td>
-                <button class="btn btn-sm btn-secondary" (click)="showPresAndProcbyID(record.id)">View data</button>
+              <div class="text-break" style="height: 80px; overflow-y: auto;">
+              {{ record.symptoms }}
+              </div>
             </td>
             <td>
+              <div class="text-break" style="height: 80px; overflow-y: auto;">
+                {{ record.diagnosis }}
+              </div>
+            </td>
+            <td>
+              <div class="text-break" style="height: 80px; overflow-y: auto;">
+                {{ record.notes }}
+              </div>
+            </td>
+            
+            <td class="text-nowrap">
+                <button class="btn btn-sm btn-secondary" (click)="showPresAndProcbyID(record.id)">View data</button>
+            </td>
+            <td class="text-nowrap">
                 <button class="btn btn-sm btn-success me-2" (click)="addPrescription(record.id)">Add prescriptions</button>
                 <button class="btn btn-sm btn-success" (click)="addProcedure(record.id)">Add procedure</button>
             </td>
-            <td>
+            <td class="text-nowrap">
                 <button class="btn btn-sm btn-primary me-2" (click)="updateMedicalRecord(record.id)">Edit</button>
                 <button class="btn btn-sm btn-danger" (click)="deleteMedicalRecord(record.id)">Delete</button>
             </td>

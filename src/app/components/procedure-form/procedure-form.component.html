@@ -1,6 +1,6 @@
 <h2 class="text-center my-5">{{this.isEditing ? 'Edit' : 'Create'}} Procedure</h2>
 
-<div *ngIf="errorMessage!=''">
+<div class="text-danger text-center" *ngIf="errorMessage!=''">
     {{errorMessage}}
 </div>
 
@@ -20,7 +20,7 @@
 
         <div class="mb-3">
             <label class="form-label" for="notes">Notes:*</label>
-            <input required #notes="ngModel" type="text" class="form-control" name="notes" [(ngModel)]="procedureDTO.notes">
+            <textarea required #notes="ngModel" class="form-control" name="notes" [(ngModel)]="procedureDTO.notes"></textarea>
             <div *ngIf="notes.invalid && (notes.touched || notes.dirty)" class="text-danger">
                 Notes are required.
             </div>

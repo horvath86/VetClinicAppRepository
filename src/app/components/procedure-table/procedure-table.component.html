@@ -21,9 +21,13 @@
             <td>{{procedure.id}}</td>
             <td>{{procedure.medicalRecordId}}</td>
             <td>{{procedureType[procedure.procedureType]}}</td>
-            <td>{{procedure.notes}}</td>
-            <td>{{procedure.anesthesiaUsed ? 'Yes' : 'No'}}</td>
             <td>
+              <div class="text-break" style="height: 80px; overflow-y: auto;">
+                {{ procedure.notes }}
+              </div>
+            </td>
+            <td>{{procedure.anesthesiaUsed ? 'Yes' : 'No'}}</td>
+            <td class="text-nowrap">
                 <button class="btn btn-sm btn-primary me-2" (click)="updateProcedure(procedure.id)">Edit</button>
                 <button class="btn btn-sm btn-danger" (click)="deleteProcedure(procedure.id)">Delete</button>
             </td>
