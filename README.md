@@ -1,27 +1,19 @@
-# VetClinicApp
+## This is the backend for the Vet Clinic application, built using C# (ASP.NET Core).
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.0.0.
+# Vet Clinic App - Version 1 (Prototype)
 
-## Development server
+This is the initial foundational prototype of my Vet Clinic application. The goal of Version 1 was to design the core database structure, build the basic CRUD operations, and connect a working Angular frontend to a C# ASP.NET Core backend.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+* **Backend:** C# (ASP.NET Core Web API)
+* **Database:** SQL Server via Entity Framework Core
+* **Frontend:** Angular, HTML5, and CSS3
 
-## Code scaffolding
+## Core Features Implemented
+* **Basic CRUD Operations:** Set up the initial data pathways to create, read, update, and delete Users, Animals, and Medications.
+* **Relational Database Design:** Configured tables, foreign keys, and standard query tracking filters.
+* **Connected User Interface:** Formed the basic layout input fields and roster tables to display backend data on the screen.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Why I Moved to Version 2
+While Version 1 successfully connected the frontend to the backend, it revealed a few architectural limitations. It relied on default browser styling, lacked defense safeguards against duplicate data codes, and the UI buttons would lock up during server errors. 
 
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+I built **Version 2** as a separate repository to address these edge cases, implement strict controller-level input validations, add full multi-language support (English/Serbian), and design a polished, responsive card dashboard layout.
